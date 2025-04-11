@@ -1,0 +1,32 @@
+{
+    "version": 1,
+    "display_name": "IPFSTest",
+    "encoding": "proto",
+    "service_type": "grpc",
+    "service_api_source": "ipfs://QmZwRKbzenx2LFH3Zu8vDyZGC7FuXqtgdgKx6kFcwsXSHL",
+    "mpe_address": "0x7E0aF8988DF45B824b2E0e0A87c6196897744970",
+    "groups": [
+        {
+            "group_name": "default_group",
+            "pricing": [
+                {
+                    "price_model": "fixed_price",
+                    "price_in_cogs": 1,
+                    "default": true
+                }
+            ],
+            "free_calls": 15,
+            "free_call_signer_address": "0xeDFb9c1e6C4ac9A2333552C5F52a0acaeB555EA8",
+            "endpoints": [
+                "http://127.0.0.1:6888"
+            ],
+            "daemon_addresses": [
+                "http://127.0.0.1:6888"
+            ],
+            "group_id": "2f+G3OaX5n9etCXB2RSOiKrDWxWi5pm9qk7zgS9Un8k="
+        }
+    ],
+    "assets": {},
+    "media": [],
+    "tags": []
+}
