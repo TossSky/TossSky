@@ -1,60 +1,71 @@
-<p align="center">
- <img src="https://media.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif" width="320"/>
-</p>
+<div align="center">
+
+<img src="./assets/banner.svg" alt="TossSky — security · blockchain · systems" width="100%"/>
+
+<br/>
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=21&pause=900&color=FF3B1A&center=true&vCenter=true&width=780&height=42&lines=Pre-audit+screening+for+the+things+that+hold+value.;Four+engines+in+parallel.+Claude+kills+the+noise.;Smart-contract+security+%C2%B7+trading+systems+%C2%B7+OS+kernels." alt="What I build"/>
+
+<br/>
+
+<a href="https://etorn.ee"><img src="https://img.shields.io/badge/ETorn-SMART--CONTRACT_WATCHTOWER-FF3B1A?style=for-the-badge&labelColor=000000&color=FF3B1A" alt="ETorn — Smart-Contract Watchtower"/></a>
+&nbsp;
+<img src="https://komarev.com/ghpvc/?username=TossSky&color=FF3B1A&style=for-the-badge&label=SIGNALS+RECEIVED&labelColor=000000" alt="Profile views"/>
+
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=Vjatseslav+Totski;aka+TossSky;&center=true&width=300&height=30&color=FFFFFF&background=000000" />
-</p>
+### `/01` &nbsp; manifesto
+
+I build **watchtowers.**
+
+Smart contracts that hold millions. Trading systems that don't sleep. Operating systems down to the bootloader. Different stacks — one obsession: **make code fail loudly in a lab, so it never fails silently in production.**
+
+> Paste a contract address. Four engines run in parallel, Claude deduplicates the noise, the criticals reproduce on a mainnet fork. Public report, under 30 seconds.
+
+That's **[ETorn](https://etorn.ee)** — pre-audit screening for Solidity, before you pay $50k for a human one. The rest of the workshop runs the same way: adversarial first, polished second.
 
 ---
 
-<p align="center">
- 
-![](https://img.shields.io/badge/OS-Linux-black?style=flat\&logo=linux\&logoColor=white)
-![](https://img.shields.io/badge/Security-Kali_Linux-black?style=flat\&logo=kalilinux\&logoColor=white)
-![](https://img.shields.io/badge/Forensics-Wireshark-black?style=flat\&logo=wireshark\&logoColor=white)
-![](https://img.shields.io/badge/SIEM-Splunk-black?style=flat\&logo=splunk\&logoColor=white)
-![](https://img.shields.io/badge/Firewall-pfSense-black?style=flat\&logo=pfsense\&logoColor=white)
+### `/02` &nbsp; signal
 
-![](https://img.shields.io/badge/Reverse-Ghidra-black?style=flat\&logo=ghidra\&logoColor=white)
-![](https://img.shields.io/badge/Reverse-IDA_Pro-black?style=flat\&logo=ida\&logoColor=white)
-![](https://img.shields.io/badge/Debug-GDB-black?style=flat\&logo=gnu\&logoColor=white)
-![](https://img.shields.io/badge/Reverse-Frida-black?style=flat\&logo=frida\&logoColor=white)
+<div align="center">
 
-![](https://img.shields.io/badge/ASM-x86__64-black?style=flat\&logo=intel\&logoColor=white)
-![](https://img.shields.io/badge/Lang-C-black?style=flat\&logo=c\&logoColor=white)
-![](https://img.shields.io/badge/Lang-C++-black?style=flat\&logo=cplusplus\&logoColor=white)
-![](https://img.shields.io/badge/Lang-Rust-black?style=flat\&logo=rust\&logoColor=white)
+<img height="170" src="https://github-readme-stats.vercel.app/api?username=TossSky&show_icons=true&hide_title=true&hide_border=true&include_all_commits=true&count_private=true&bg_color=08080B&text_color=C8C8CC&icon_color=FF3B1A&title_color=FF3B1A&ring_color=FF3B1A" alt="GitHub stats"/>
+&nbsp;
+<img height="170" src="https://streak-stats.demolab.com?user=TossSky&hide_border=true&background=08080B&border=18181F&stroke=18181F&ring=FF3B1A&fire=FF3B1A&currStreakNum=FAFAFA&currStreakLabel=FF3B1A&sideNums=FAFAFA&sideLabels=C8C8CC&dates=8A8A8E" alt="Contribution streak"/>
 
-![](https://img.shields.io/badge/Crypto-OpenSSL-black?style=flat\&logo=openssl\&logoColor=white)
-![](https://img.shields.io/badge/Crypto-GnuPG-black?style=flat\&logo=gnuprivacyguard\&logoColor=white)
-![](https://img.shields.io/badge/HSM-YubiKey-black?style=flat\&logo=yubico\&logoColor=white)
+<img height="150" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TossSky&layout=compact&hide_border=true&langs_count=8&count_private=true&bg_color=08080B&text_color=C8C8CC&title_color=FF3B1A" alt="Top languages"/>
 
-![](https://img.shields.io/badge/Blockchain-Ethereum-black?style=flat\&logo=ethereum\&logoColor=white)
-![](https://img.shields.io/badge/Smart_Contract-Solidity-black?style=flat\&logo=solidity\&logoColor=white)
-![](https://img.shields.io/badge/Library-Ethers.js-black?style=flat\&logo=ethereum\&logoColor=white)
-![](https://img.shields.io/badge/Wallet-MetaMask-black?style=flat\&logo=metamask\&logoColor=white)
-
-![](https://img.shields.io/badge/Pentest-Metasploit-black?style=flat\&logo=metasploit\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Burp_Suite-black?style=flat\&logo=burpsuite\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Nmap-black?style=flat\&logo=nmap\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Hashcat-black?style=flat\&logo=hashcat\&logoColor=white)
-
-![](https://img.shields.io/badge/Backend-Python-black?style=flat\&logo=python\&logoColor=white)
-![](https://img.shields.io/badge/Backend-Go-black?style=flat\&logo=go\&logoColor=white)
-![](https://img.shields.io/badge/Tools-Docker-black?style=flat\&logo=docker\&logoColor=white)
-![](https://img.shields.io/badge/Tools-Kubernetes-black?style=flat\&logo=kubernetes\&logoColor=white)
-
-![](https://img.shields.io/badge/DB-PostgreSQL-black?style=flat\&logo=postgresql\&logoColor=white)
-![](https://img.shields.io/badge/DB-MySQL-black?style=flat\&logo=mysql\&logoColor=white)
-![](https://img.shields.io/badge/DB-MongoDB-black?style=flat\&logo=mongodb\&logoColor=white)
-</p>
-
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=TossSky&show_icons=true&hide_title=true&hide_border=true&count_private=true&bg_color=000000&text_color=FFFFFF&icon_color=FFFFFF&rank_icon=github"/>
-</p>
+### `/03` &nbsp; trajectory
+
+<div align="center">
+
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=TossSky&bg_color=000000&color=FF3B1A&line=FF3B1A&point=FFFFFF&area=true&area_color=FF3B1A&hide_border=true&custom_title=Contribution%20signal%20%E2%80%94%20last%2031%20days" alt="Contribution activity graph" width="100%"/>
+
+<br/>
+<br/>
+
+<!-- Contribution snake — generated by .github/workflows/snake.yml, served from the `output` branch.
+     It stays a broken image until the workflow runs once on the default branch. -->
+<img src="https://raw.githubusercontent.com/TossSky/TossSky/output/github-snake-dark.svg" alt="Contribution snake eating the activity graph" width="100%"/>
+
+</div>
+
+---
+
+<div align="center">
+
+`reach the tower`
+
+[**etorn.ee**](https://etorn.ee) &nbsp;·&nbsp; [**email**](mailto:vyacheslav@totsky.ee) &nbsp;·&nbsp; [**telegram**](https://t.me/TossSky)
+
+<sub>St. Petersburg Polytechnic · Information Security · SingularityNET</sub>
+
+</div>
