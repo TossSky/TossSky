@@ -1,60 +1,63 @@
-<p align="center">
- <img src="https://media.giphy.com/media/d31vTpVi1LAcDvdm/giphy.gif" width="320"/>
-</p>
+<div align="center">
+
+<img src="./assets/banner.svg" alt="TossSky — security, blockchain, systems" width="100%"/>
+
+<br/>
+<br/>
+
+<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1000&color=FF1500&center=true&vCenter=true&width=820&height=42&lines=i+find+bugs+before+they+cost+money;paste+a+contract+address%2C+get+a+public+report+in+~60s;i+trust+code+that+has+tried+to+break+itself" alt="What I do"/>
+
+<br/>
+
+<a href="https://etorn.ee"><img src="https://img.shields.io/badge/ETorn-LIVE_at_etorn.ee-FF1500?style=for-the-badge&labelColor=000000&color=FF1500" alt="ETorn — live at etorn.ee"/></a>
+&nbsp;
+<img src="https://komarev.com/ghpvc/?username=TossSky&color=FF1500&style=for-the-badge&label=VISITS&labelColor=000000" alt="Profile visits"/>
+
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://readme-typing-svg.herokuapp.com/?lines=Vjatseslav+Totski;aka+TossSky;&center=true&width=300&height=30&color=FFFFFF&background=000000" />
-</p>
+### `/01` &nbsp; what i do
+
+I work on smart-contract security and a few things around it. Solo, mostly.
+
+The main one is **[ETorn](https://etorn.ee)**, live now. You paste a contract address, four engines scan it at once, Claude throws out the false positives, and anything critical gets re-run as a real exploit on a forked mainnet. The report is public and lands in about a minute. I pointed it at the big historic hacks (The DAO, Parity, Compound) and it caught them.
+
+The rest of the bench: trading bots, firmware for ESP32 boards, and an OS kernel I poke at when I want to remember how a computer actually boots. I study information security at SPbPU in St. Petersburg.
+
+I trust code that has tried to break itself.
 
 ---
 
-<p align="center">
- 
-![](https://img.shields.io/badge/OS-Linux-black?style=flat\&logo=linux\&logoColor=white)
-![](https://img.shields.io/badge/Security-Kali_Linux-black?style=flat\&logo=kalilinux\&logoColor=white)
-![](https://img.shields.io/badge/Forensics-Wireshark-black?style=flat\&logo=wireshark\&logoColor=white)
-![](https://img.shields.io/badge/SIEM-Splunk-black?style=flat\&logo=splunk\&logoColor=white)
-![](https://img.shields.io/badge/Firewall-pfSense-black?style=flat\&logo=pfsense\&logoColor=white)
+### `/02` &nbsp; signal
 
-![](https://img.shields.io/badge/Reverse-Ghidra-black?style=flat\&logo=ghidra\&logoColor=white)
-![](https://img.shields.io/badge/Reverse-IDA_Pro-black?style=flat\&logo=ida\&logoColor=white)
-![](https://img.shields.io/badge/Debug-GDB-black?style=flat\&logo=gnu\&logoColor=white)
-![](https://img.shields.io/badge/Reverse-Frida-black?style=flat\&logo=frida\&logoColor=white)
+<div align="center">
 
-![](https://img.shields.io/badge/ASM-x86__64-black?style=flat\&logo=intel\&logoColor=white)
-![](https://img.shields.io/badge/Lang-C-black?style=flat\&logo=c\&logoColor=white)
-![](https://img.shields.io/badge/Lang-C++-black?style=flat\&logo=cplusplus\&logoColor=white)
-![](https://img.shields.io/badge/Lang-Rust-black?style=flat\&logo=rust\&logoColor=white)
+<img src="https://img.shields.io/github/followers/TossSky?style=for-the-badge&label=FOLLOWERS&labelColor=000000&color=FF1500&logo=github&logoColor=FF1500" alt="GitHub followers"/>
 
-![](https://img.shields.io/badge/Crypto-OpenSSL-black?style=flat\&logo=openssl\&logoColor=white)
-![](https://img.shields.io/badge/Crypto-GnuPG-black?style=flat\&logo=gnuprivacyguard\&logoColor=white)
-![](https://img.shields.io/badge/HSM-YubiKey-black?style=flat\&logo=yubico\&logoColor=white)
+<br/>
+<br/>
 
-![](https://img.shields.io/badge/Blockchain-Ethereum-black?style=flat\&logo=ethereum\&logoColor=white)
-![](https://img.shields.io/badge/Smart_Contract-Solidity-black?style=flat\&logo=solidity\&logoColor=white)
-![](https://img.shields.io/badge/Library-Ethers.js-black?style=flat\&logo=ethereum\&logoColor=white)
-![](https://img.shields.io/badge/Wallet-MetaMask-black?style=flat\&logo=metamask\&logoColor=white)
+<img src="https://github-readme-activity-graph.vercel.app/graph?username=TossSky&bg_color=000000&color=FF1500&line=FF1500&point=FFFFFF&area=true&area_color=FF1500&hide_border=true&custom_title=Commits,%20last%2031%20days" alt="Contribution activity graph" width="100%"/>
 
-![](https://img.shields.io/badge/Pentest-Metasploit-black?style=flat\&logo=metasploit\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Burp_Suite-black?style=flat\&logo=burpsuite\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Nmap-black?style=flat\&logo=nmap\&logoColor=white)
-![](https://img.shields.io/badge/Pentest-Hashcat-black?style=flat\&logo=hashcat\&logoColor=white)
-
-![](https://img.shields.io/badge/Backend-Python-black?style=flat\&logo=python\&logoColor=white)
-![](https://img.shields.io/badge/Backend-Go-black?style=flat\&logo=go\&logoColor=white)
-![](https://img.shields.io/badge/Tools-Docker-black?style=flat\&logo=docker\&logoColor=white)
-![](https://img.shields.io/badge/Tools-Kubernetes-black?style=flat\&logo=kubernetes\&logoColor=white)
-
-![](https://img.shields.io/badge/DB-PostgreSQL-black?style=flat\&logo=postgresql\&logoColor=white)
-![](https://img.shields.io/badge/DB-MySQL-black?style=flat\&logo=mysql\&logoColor=white)
-![](https://img.shields.io/badge/DB-MongoDB-black?style=flat\&logo=mongodb\&logoColor=white)
-</p>
-
+</div>
 
 ---
 
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=TossSky&show_icons=true&hide_title=true&hide_border=true&count_private=true&bg_color=000000&text_color=FFFFFF&icon_color=FFFFFF&rank_icon=github"/>
-</p>
+### `/03` &nbsp; trajectory
+
+<div align="center">
+
+<!-- Contribution snake — generated by .github/workflows/snake.yml, served from the `output` branch.
+     Stays a broken image until the workflow runs once on the default branch. -->
+<img src="https://raw.githubusercontent.com/TossSky/TossSky/output/github-snake-dark.svg" alt="Contribution snake winding through the graph" width="100%"/>
+
+</div>
+
+---
+
+<div align="center">
+
+[etorn.ee](https://etorn.ee) &nbsp;·&nbsp; [v.totski@etorn.ee](mailto:v.totski@etorn.ee) &nbsp;·&nbsp; [telegram](https://t.me/TossSky)
+
+</div>
