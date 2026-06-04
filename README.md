@@ -5,10 +5,6 @@
 <br/>
 <br/>
 
-<img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&pause=1000&color=FF1500&center=true&vCenter=true&width=820&height=42&lines=i+find+bugs+before+they+cost+money;paste+a+contract+address%2C+get+a+public+report+in+~60s;i+trust+code+that+has+tried+to+break+itself" alt="What I do"/>
-
-<br/>
-
 <a href="https://etorn.ee"><img src="https://img.shields.io/badge/ETorn-LIVE_at_etorn.ee-FF1500?style=for-the-badge&labelColor=000000&color=FF1500" alt="ETorn — live at etorn.ee"/></a>
 &nbsp;
 <img src="https://komarev.com/ghpvc/?username=TossSky&color=FF1500&style=for-the-badge&label=VISITS&labelColor=000000" alt="Profile visits"/>
@@ -17,19 +13,7 @@
 
 ---
 
-### `/01` &nbsp; what i do
-
-I work on smart-contract security and a few things around it. Solo, mostly.
-
-The main one is **[ETorn](https://etorn.ee)**, live now. You paste a contract address, four engines scan it at once, Claude throws out the false positives, and anything critical gets re-run as a real exploit on a forked mainnet. The report is public and lands in about a minute. I pointed it at the big historic hacks (The DAO, Parity, Compound) and it caught them.
-
-The rest of the bench: trading bots, firmware for ESP32 boards, and an OS kernel I poke at when I want to remember how a computer actually boots. I study information security at SPbPU in St. Petersburg.
-
-I trust code that has tried to break itself.
-
----
-
-### `/02` &nbsp; signal
+### `/01` &nbsp; signal
 
 <div align="center">
 
@@ -44,7 +28,7 @@ I trust code that has tried to break itself.
 
 ---
 
-### `/03` &nbsp; trajectory
+### `/02` &nbsp; trajectory
 
 <div align="center">
 
