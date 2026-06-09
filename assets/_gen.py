@@ -1,135 +1,177 @@
 #!/usr/bin/env python3
-"""Generate one composed canvas for the profile: cover.svg.
+"""Generate the profile hero: cover.svg.
 
-Not a stack of boxes — a single tall composition. Deep black, scarlet
-accent, a recurring spiral / signal motif, lots of negative space.
-Content is abstract; the only concrete bit is a two-line work list."""
+A single wide terminal/scanner banner. Pure-black OLED ground, blood-red
+signal, JetBrains-Mono voice. Glitch-split wordmark, scanlines, a sweeping
+scan beam, crosshair corner brackets, and one Bob-Ross creed at the bottom:
+we don't make mistakes — just happy little accidents."""
 import math, os
 
 BLACK   = "#000000"
-SCARLET = "#FF1500"
-BRIGHT  = "#FF5340"
+RED     = "#FF1500"   # primary scarlet
+BLOOD   = "#E11D48"   # rose-blood
+EMBER   = "#FF5340"   # bright ember
+DEEPRED = "#C81029"   # dried blood (kept legible for the punchline)
 INK     = "#FAFAFA"
-INK2    = "#C8C8CC"
 INK3    = "#8A8A8E"
 INK4    = "#56565B"
+CYAN    = "#16E0E0"   # glitch ghost channel
+MONO = "'JetBrains Mono', ui-monospace, 'SF Mono', 'Cascadia Code', monospace"
 SANS = "ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
-MONO = "ui-monospace, 'SF Mono', 'Cascadia Code', 'JetBrains Mono', monospace"
 HERE = os.path.dirname(__file__)
 
-W, H = 1200, 1480
+W, H = 1200, 460
 
-def spiral(cx, cy, rmax, arms=6, turns=2.45, squash=0.46, steps=200, dur=30):
-    rmin = rmax * 0.045
-    def arm(off):
-        pts, tmax = [], turns * 2 * math.pi
-        for s in range(steps + 1):
-            f = s / steps
-            r = rmin + (rmax - rmin) * (1 - f) ** 1.06
-            a = tmax * f + off
-            pts.append(f"{cx + r*math.cos(a):.1f},{cy + r*squash*math.sin(a):.1f}")
-        return " ".join(pts)
-    o = [f'<circle cx="{cx}" cy="{cy}" r="{rmax*0.34:.0f}" fill="url(#core)">'
-         f'<animate attributeName="opacity" values="0.7;1;0.7" dur="6s" repeatCount="indefinite"/></circle>']
-    o.append(f'<g><animateTransform attributeName="transform" type="rotate" '
-             f'from="0 {cx:.0f} {cy:.0f}" to="360 {cx:.0f} {cy:.0f}" dur="{dur}s" repeatCount="indefinite"/>')
-    for k in range(arms):
-        off = k * 2 * math.pi / arms
-        if k == 0:
-            o.append(f'<polyline points="{arm(off)}" fill="none" stroke="{SCARLET}" stroke-width="1.5" '
-                     f'stroke-linecap="round" stroke-linejoin="round" opacity="0.92"/>')
-        else:
-            op = 0.15 if k % 2 else 0.09
-            o.append(f'<polyline points="{arm(off)}" fill="none" stroke="#FFFFFF" stroke-opacity="{op:.2f}" '
-                     f'stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round"/>')
-    o.append(f'<circle cx="{cx}" cy="{cy}" r="3" fill="{SCARLET}"/></g>')
+
+def scanlines():
+    """Horizontal red scanlines across the whole canvas, very faint."""
+    o = ['<g opacity="0.5">']
+    y = 0
+    while y < H:
+        o.append(f'<line x1="0" y1="{y}" x2="{W}" y2="{y}" stroke="{RED}" '
+                 f'stroke-opacity="0.045" stroke-width="1"/>')
+        y += 3
+    o.append('</g>')
     return "\n".join(o)
 
-def sine(y0, amp, freq, phase, x0, x1, stroke, op, sw, steps=240):
-    pts = []
-    for s in range(steps + 1):
-        x = x0 + (x1 - x0) * s / steps
-        t = (x - x0) / (x1 - x0)
-        # taper amplitude at the ends so the curve fades into space
-        env = math.sin(math.pi * t)
-        yv = y0 + amp * env * math.sin(freq * 2 * math.pi * t + phase)
-        pts.append(f"{x:.1f},{yv:.1f}")
-    return (f'<polyline points="{" ".join(pts)}" fill="none" stroke="{stroke}" '
-            f'stroke-opacity="{op}" stroke-width="{sw}" stroke-linecap="round"/>')
+
+def grid():
+    """Faint vertical hairlines, blood-red, varying heights (a signal field)."""
+    o = ['<g>']
+    n = 60
+    for i in range(n):
+        x = 70 + i * ((W - 140) / (n - 1))
+        hh = 10 + 26 * abs(math.sin(i * 0.55)) * abs(math.cos(i * 0.3))
+        op = 0.05 + 0.05 * abs(math.sin(i * 0.9))
+        o.append(f'<line x1="{x:.1f}" y1="{H-70-hh:.1f}" x2="{x:.1f}" y2="{H-70+hh:.1f}" '
+                 f'stroke="{RED}" stroke-opacity="{op:.2f}" stroke-width="1"/>')
+    o.append('</g>')
+    return "\n".join(o)
+
+
+def wordmark(cx, cy):
+    """Glitch-split 'TossSky' — cyan + blood ghosts under the off-white core."""
+    common = (f'text-anchor="middle" font-family="{SANS}" font-size="104" '
+              f'font-weight="800" letter-spacing="-4"')
+    o = ['<g>']
+    # cyan ghost, nudged left, clipped jitter
+    o.append(f'<text x="{cx-3}" y="{cy}" {common} fill="{CYAN}" opacity="0.55">TossSky'
+             f'<animate attributeName="opacity" values="0;0.55;0.2;0.55;0" '
+             f'dur="5.5s" begin="0s" repeatCount="indefinite"/>'
+             f'<animate attributeName="x" values="{cx-3};{cx-7};{cx-3};{cx-1};{cx-3}" '
+             f'dur="5.5s" repeatCount="indefinite"/></text>')
+    # blood ghost, nudged right
+    o.append(f'<text x="{cx+3}" y="{cy}" {common} fill="{BLOOD}" opacity="0.6">TossSky'
+             f'<animate attributeName="opacity" values="0.2;0.6;0.1;0.6;0.2" '
+             f'dur="4.2s" repeatCount="indefinite"/>'
+             f'<animate attributeName="x" values="{cx+3};{cx+8};{cx+2};{cx+5};{cx+3}" '
+             f'dur="4.2s" repeatCount="indefinite"/></text>')
+    # solid core
+    o.append(f'<text x="{cx}" y="{cy}" {common} fill="{INK}" '
+             f'style="filter:url(#glow)">TossSky</text>')
+    o.append('</g>')
+    return "\n".join(o)
+
+
+def crosshair(x, y, s, flip_x=1, flip_y=1):
+    """L-shaped crosshair corner bracket, blood-red."""
+    dx, dy = s * flip_x, s * flip_y
+    return (f'<path d="M {x} {y+dy} L {x} {y} L {x+dx} {y}" fill="none" '
+            f'stroke="{RED}" stroke-width="2" stroke-opacity="0.8"/>')
+
 
 def main():
     o = []
     o.append(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" fill="none" '
-             f'role="img" aria-label="TossSky — a scarlet spiral and abstract signal field on black.">')
+             f'role="img" aria-label="TossSky — a blood-red security scanner banner on black.">')
     o.append('<defs>'
-             f'<radialGradient id="core" cx="0.5" cy="0.5" r="0.5">'
-             f'<stop offset="0%" stop-color="{SCARLET}" stop-opacity="0.5"/>'
-             f'<stop offset="45%" stop-color="{SCARLET}" stop-opacity="0.12"/>'
-             f'<stop offset="100%" stop-color="{SCARLET}" stop-opacity="0"/></radialGradient>'
-             f'<radialGradient id="hv" cx="0.5" cy="0.18" r="0.7">'
-             f'<stop offset="0%" stop-color="{BLACK}" stop-opacity="0"/>'
-             f'<stop offset="72%" stop-color="{BLACK}" stop-opacity="0"/>'
-             f'<stop offset="100%" stop-color="{BLACK}" stop-opacity="0.92"/></radialGradient>'
+             f'<radialGradient id="core" cx="0.5" cy="0.42" r="0.62">'
+             f'<stop offset="0%" stop-color="{RED}" stop-opacity="0.22"/>'
+             f'<stop offset="55%" stop-color="{RED}" stop-opacity="0.06"/>'
+             f'<stop offset="100%" stop-color="{RED}" stop-opacity="0"/></radialGradient>'
              f'<linearGradient id="beam" x1="0" y1="0" x2="0" y2="1">'
-             f'<stop offset="0%" stop-color="{SCARLET}" stop-opacity="0"/>'
-             f'<stop offset="50%" stop-color="{BRIGHT}" stop-opacity="0.85"/>'
-             f'<stop offset="100%" stop-color="{SCARLET}" stop-opacity="0"/></linearGradient>'
-             f'<radialGradient id="bg2" cx="0.5" cy="0.5" r="0.5">'
-             f'<stop offset="0%" stop-color="{SCARLET}" stop-opacity="0.14"/>'
-             f'<stop offset="100%" stop-color="{SCARLET}" stop-opacity="0"/></radialGradient></defs>')
+             f'<stop offset="0%" stop-color="{RED}" stop-opacity="0"/>'
+             f'<stop offset="50%" stop-color="{EMBER}" stop-opacity="0.9"/>'
+             f'<stop offset="100%" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
+             f'<linearGradient id="beamhalo" x1="0" y1="0" x2="1" y2="0">'
+             f'<stop offset="0%" stop-color="{RED}" stop-opacity="0"/>'
+             f'<stop offset="50%" stop-color="{RED}" stop-opacity="0.16"/>'
+             f'<stop offset="100%" stop-color="{RED}" stop-opacity="0"/></linearGradient>'
+             f'<radialGradient id="vig" cx="0.5" cy="0.5" r="0.75">'
+             f'<stop offset="60%" stop-color="{BLACK}" stop-opacity="0"/>'
+             f'<stop offset="100%" stop-color="{BLACK}" stop-opacity="0.9"/></radialGradient>'
+             f'<filter id="glow" x="-30%" y="-30%" width="160%" height="160%">'
+             f'<feGaussianBlur stdDeviation="3.2" result="b"/>'
+             f'<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>'
+             f'</filter></defs>')
+
     o.append(f'<rect width="{W}" height="{H}" fill="{BLACK}"/>')
+    o.append(f'<rect width="{W}" height="{H}" fill="url(#core)"/>')
+    o.append(grid())
+    o.append(scanlines())
 
-    # ---------- A · hero spiral ----------
-    o.append(spiral(600, 250, 196))
-    o.append(f'<rect y="0" width="{W}" height="560" fill="url(#hv)"/>')
-    o.append(f'<text x="600" y="470" text-anchor="middle" font-family="{SANS}" font-size="76" '
-             f'font-weight="800" letter-spacing="-3" fill="{INK}">TossSky</text>')
-    o.append(f'<text x="600" y="506" text-anchor="middle" font-family="{MONO}" font-size="13" '
-             f'letter-spacing="7" fill="{INK3}">SECURITY · BLOCKCHAIN · SYSTEMS</text>')
-
-    # ---------- B · abstract signal field ----------
-    fy = 760
-    o.append(f'<text x="80" y="650" font-family="{MONO}" font-size="11" letter-spacing="6" fill="{INK4}">FIELD</text>')
-    # faint vertical hairline grid, varying heights
-    for i in range(49):
-        x = 80 + i * (1040/48)
-        hh = 26 + 70 * abs(math.sin(i*0.6))*abs(math.cos(i*0.27))
-        o.append(f'<line x1="{x:.1f}" y1="{fy-hh:.1f}" x2="{x:.1f}" y2="{fy+hh:.1f}" '
-                 f'stroke="#FFFFFF" stroke-opacity="0.05" stroke-width="1"/>')
-    # layered sine curves, one scarlet
-    o.append(sine(fy, 86, 2.1, 0.0, 80, 1120, "#FFFFFF", "0.10", 1.0))
-    o.append(sine(fy, 64, 3.3, 1.7, 80, 1120, "#FFFFFF", "0.08", 1.0))
-    o.append(sine(fy, 104, 1.5, 0.6, 80, 1120, SCARLET, "0.85", 1.6))
-    # sweeping scan beam across the field
-    o.append(f'<g><rect x="-25" y="{fy-150}" width="50" height="300" fill="url(#bg2)"/>'
-             f'<rect x="-0.8" y="{fy-140}" width="1.6" height="280" fill="url(#beam)"/>'
-             f'<animateTransform attributeName="transform" type="translate" values="120 0; {W-120} 0; 120 0" '
-             f'dur="8s" repeatCount="indefinite" calcMode="spline" keyTimes="0;0.5;1" '
+    # sweeping scan beam (halo + bright line)
+    o.append(f'<g><rect x="-60" y="0" width="120" height="{H}" fill="url(#beamhalo)"/>'
+             f'<rect x="-1" y="0" width="2" height="{H}" fill="url(#beam)"/>'
+             f'<animateTransform attributeName="transform" type="translate" '
+             f'values="90 0; {W-90} 0; 90 0" dur="7s" repeatCount="indefinite" '
+             f'calcMode="spline" keyTimes="0;0.5;1" '
              f'keySplines="0.45 0 0.55 1;0.45 0 0.55 1"/></g>')
 
-    # ---------- C · selected work (editorial list, 2 entries) ----------
-    wy = 1010
-    o.append(f'<text x="80" y="{wy}" font-family="{MONO}" font-size="11" letter-spacing="6" fill="{INK3}">SELECTED WORK</text>')
-    o.append(f'<line x1="80" y1="{wy+26}" x2="{W-80}" y2="{wy+26}" stroke="#FFFFFF" stroke-opacity="0.10"/>')
-    rows = [("ETorn", "security · web3"), ("OmegaClaw-Core", "autonomous agents")]
-    for i, (name, tag) in enumerate(rows):
-        ry = wy + 26 + 64 + i * 84
-        o.append(f'<rect x="80" y="{ry-44}" width="3" height="30" fill="{SCARLET}" opacity="0.9"/>')
-        o.append(f'<text x="104" y="{ry-18}" font-family="{SANS}" font-size="34" font-weight="700" '
-                 f'letter-spacing="-1" fill="{INK}">{name}</text>')
-        o.append(f'<text x="{W-80}" y="{ry-22}" text-anchor="end" font-family="{MONO}" font-size="12" '
-                 f'letter-spacing="3" fill="{INK3}">{tag.upper()}</text>')
-        o.append(f'<line x1="80" y1="{ry+18}" x2="{W-80}" y2="{ry+18}" stroke="#FFFFFF" stroke-opacity="0.07"/>')
+    # top status line: terminal prompt
+    o.append(f'<circle cx="74" cy="60" r="4" fill="{RED}"><animate attributeName="opacity" '
+             f'values="1;0.25;1" dur="1.4s" repeatCount="indefinite"/></circle>')
+    o.append(f'<text x="90" y="65" font-family="{MONO}" font-size="14" letter-spacing="1" '
+             f'fill="{INK3}">root@tossky:~# ./scan --target self --mode happy-accidents</text>')
+    o.append(f'<text x="{W-70}" y="65" text-anchor="end" font-family="{MONO}" font-size="13" '
+             f'letter-spacing="3" fill="{RED}" opacity="0.85">[ LIVE ]</text>')
 
-    # ---------- D · closing flourish ----------
-    o.append(spiral(600, 1330, 70, arms=5, turns=2.0, dur=44))
-    o.append(f'<rect y="1230" width="{W}" height="250" fill="url(#hv)" opacity="0"/>')
+    # crosshair corner brackets
+    m, s = 40, 26
+    o.append(crosshair(m, m, s, 1, 1))
+    o.append(crosshair(W - m, m, s, -1, 1))
+    o.append(crosshair(m, H - m, s, 1, -1))
+    o.append(crosshair(W - m, H - m, s, -1, -1))
+
+    # hero wordmark + subtitle
+    o.append(wordmark(W // 2, 230))
+    o.append(f'<text x="{W//2}" y="272" text-anchor="middle" font-family="{MONO}" '
+             f'font-size="15" letter-spacing="9" fill="{INK3}">SECURITY · BLOCKCHAIN · SYSTEMS</text>')
+
+    # thin red rule with end caps
+    ry = 320
+    o.append(f'<line x1="320" y1="{ry}" x2="{W-320}" y2="{ry}" stroke="{RED}" '
+             f'stroke-opacity="0.5" stroke-width="1"/>')
+    o.append(f'<circle cx="320" cy="{ry}" r="3" fill="{RED}"/>')
+    o.append(f'<circle cx="{W-320}" cy="{ry}" r="3" fill="{RED}"/>')
+    o.append(f'<rect x="{W//2-4}" y="{ry-4}" width="8" height="8" fill="{RED}" '
+             f'transform="rotate(45 {W//2} {ry})"/>')
+
+    # Bob Ross creed
+    o.append(f'<text x="{W//2}" y="372" text-anchor="middle" font-family="{MONO}" '
+             f'font-size="17" letter-spacing="1" fill="{INK}">'
+             f'&quot;we don\'t make mistakes &#8212; just happy little accidents.&quot;</text>')
+    o.append(f'<text x="{W//2}" y="398" text-anchor="middle" font-family="{MONO}" '
+             f'font-size="12" letter-spacing="5" fill="{DEEPRED}">&#8212; BOB ROSS, RELUCTANT THREAT MODEL</text>')
+
+    # blinking cursor block at the very bottom
+    o.append(f'<rect x="{W//2-70}" y="416" width="11" height="18" fill="{RED}">'
+             f'<animate attributeName="opacity" values="1;1;0;0" dur="1.1s" '
+             f'repeatCount="indefinite"/></rect>')
+    o.append(f'<text x="{W//2-52}" y="431" font-family="{MONO}" font-size="13" '
+             f'letter-spacing="2" fill="{INK4}">awaiting input</text>')
+
+    o.append(f'<rect width="{W}" height="{H}" fill="url(#vig)"/>')
+    # outer hairline frame
+    o.append(f'<rect x="1" y="1" width="{W-2}" height="{H-2}" fill="none" '
+             f'stroke="{RED}" stroke-opacity="0.25" stroke-width="1"/>')
 
     o.append('</svg>')
     body = "\n".join(o)
     with open(os.path.join(HERE, "cover.svg"), "w", encoding="utf-8") as f:
         f.write(body + "\n")
     print(f"wrote cover.svg ({len(body)} bytes)")
+
 
 if __name__ == "__main__":
     main()
